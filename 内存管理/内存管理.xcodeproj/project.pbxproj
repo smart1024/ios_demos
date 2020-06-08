@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F2C618D8248E714F006D2D1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C618D7248E714F006D2D1E /* main.m */; };
+		F2C618E0248E7751006D2D1E /* ClassA.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C618DF248E7751006D2D1E /* ClassA.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		F2C618D4248E714F006D2D1E /* 内存管理 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "内存管理"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C618D7248E714F006D2D1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2C618DE248E7751006D2D1E /* ClassA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassA.h; sourceTree = "<group>"; };
+		F2C618DF248E7751006D2D1E /* ClassA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassA.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +44,8 @@
 		F2C618CB248E714F006D2D1E = {
 			isa = PBXGroup;
 			children = (
+				F2C618DE248E7751006D2D1E /* ClassA.h */,
+				F2C618DF248E7751006D2D1E /* ClassA.m */,
 				F2C618D6248E714F006D2D1E /* 内存管理 */,
 				F2C618D5248E714F006D2D1E /* Products */,
 			);
@@ -119,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C618E0248E7751006D2D1E /* ClassA.m in Sources */,
 				F2C618D8248E714F006D2D1E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
