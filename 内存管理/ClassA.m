@@ -10,4 +10,12 @@
 
 @implementation ClassA
 
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    ClassA* clazz = [[ClassA alloc] init];
+    return clazz;
+}
+
+-(void) printWebSite{
+    NSLog(@"ClassA 中打印website的值：%@",self.website);
+}
 @end

@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ClassA : NSObject
+@interface ClassA : NSObject<NSCopying>
+@property (nonatomic,copy) NSString* website;
 @property (nonatomic,copy) NSMutableString* name;
 @property (nonatomic,strong) NSMutableString* strongName;
 @property (nonatomic,weak) NSMutableString* weakName;
@@ -22,5 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString* name1;
 @property (nonatomic,copy) NSArray* courseResults;
 @property (nonatomic,copy) void (^blockProperty)(void);
+
+-(void) printWebSite;
 @end
 NS_ASSUME_NONNULL_END
