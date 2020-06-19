@@ -195,6 +195,194 @@ int main(int argc, const char * argv[]) {
         mArray[0] = @"www.99ios.com";
         
         NSLog(@"更新后，数组中第一个对象的值：%@",mArray[0]);
+        
+        /**
+         字典类：
+         快速创建方法
+         @{
+            key1:value,
+            key2:value,
+            ...
+         }
+         
+         1.字典键一般为NSString，也可以为其他类型
+         2.字典存储是无序的
+         */
+        
+        //1、字典字面量方式创建字典
+        NSDictionary* dict = @{
+            @"website":@"www.99ios.com",
+            @"name":@"九九学院",
+            @"business":@"IOS学习",
+            @"foundedYear":@2016
+        };
+        
+        NSLog(@"dict==%@",dict);
+        //2、dictionaryWithObjectAndKeys类方法创建字典
+        NSDictionary* dict1 = [NSDictionary dictionaryWithObjectsAndKeys:@"www.99ios.com",@"website",@"九九学院",@"name", nil];
+        NSLog(@"dict1==%@",dict1);
+        
+        //3.使用键数组和值数组创建字典
+        NSArray* keys = @[@"website",@"name"];
+        NSArray* values = @[@"www.99ios.com",@"九九学院"];
+        NSDictionary* dict3 = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+        NSLog(@"dict3===%@",dict3);
+        
+        //4、创建非NSString类型的key
+        NSDictionary* dict4 = @{
+            @2016:@"2016"
+        };
+        NSLog(@"dict4 value:%@",[dict4 objectForKey:@2016]);
+        
+        //5、实例方法：objectForkey
+        
+        NSString* website = dict[@"website"];
+        
+        NSLog(@"website==%@",website);
+        
+        NSString* name = [dict objectForKey:@"name"];
+        NSLog(@"字典中name对应的value为：%@",name);
+        
+        for (NSDictionary* key in dict) {
+            NSLog(@"key:%@ value:%@",key,dict[key]);
+        }
+        
+        //获取字典长度
+        NSLog(@"dict 长度为：%ld",dict.count);
+        
+        //获取字典所有key
+        NSLog(@"dict 所有键为%@",[dict allKeys]);
+        
+        //获取字典所有值
+        NSLog(@"dict 所有值为%@",[dict allValues]);
+        
+        //可变字典NSMutableDictionnary
+        
+        NSMutableDictionary* mDict = [NSMutableDictionary dictionary];
+        
+        //增加键值对
+        [mDict setObject:@"www.99ios.com" forKey:@"website"];
+        [mDict setObject:@"九九学院" forKey:@"name"];
+        NSLog(@"website:%@",mDict[@"website"]);
+        NSLog(@"name:%@",mDict[@"name"]);
+        
+        //修改键值对的值
+        mDict[@"website"] = @"www.apple.com";
+        mDict[@"name"] = @"苹果公司";
+        NSLog(@"website:%@",mDict[@"website"]);
+        NSLog(@"name:%@",mDict[@"name"]);
+        
+        //移除键值对
+        [mDict removeObjectForKey:@"website"];
+        NSLog(@"mDict %@",mDict);
+        
+        
+        //移除多个指定键值对
+        
+        [mDict removeObjectsForKeys:@[@"website",@"name"]];
+        
+        NSLog(@"mDict %@",mDict);
+        
+        //移除所有键值对
+        [mDict removeAllObjects];
+        
+        NSLog(@"mDict %@",mDict);
+        
+        /**
+         NSNumber类：
+         1、把基本数据类型转成NSNumber类型对象，有两种方式
+          1、@123
+          2、NSNumber的类方法
+         +(NSNumber*)numberWithInt:(int)value; //转换int
+         +(NSNubmer*)numberWithFloat:(float)value; //转换float
+         +(NSNumber*)numberWithDouble:(double)value; //转换double
+         +(NSNumber*)numberWithBool:(BOOL)value; //转换bool
+         +(NSNumber*)numberWithInteger:(NSInterger)value; //转换NSInteger
+         */
+        //1、使用@创建NSNumber对象
+        NSNumber* intNum = @10;
+        NSNumber* floatNum = @3.14;
+        
+        //2、使用类方法穿件NSNumber对象
+        NSNumber* intNum2 = [NSNumber numberWithInt:10];
+        NSNumber* floatNum2 = [NSNumber numberWithFloat:3.14];
+        NSNumber* integerNum = [NSNumber numberWithInteger:100];
+        NSNumber* doubleNum = [NSNumber numberWithDouble:100.01];
+        
+        NSLog(@"intNum=%@--floatNum=%@--intNum2=%@--floatNum2=%@--integerNum=%@--doubleNum=%@",
+              intNum,floatNum,intNum2,floatNum2,integerNum,doubleNum);
+        
+        //NSNumber转为基本数据类型
+        int intBasic = [intNum intValue];
+        float floatBasic = [floatNum floatValue];
+        double doubleBasic = [doubleNum doubleValue];
+        NSInteger integerBasic = [integerNum integerValue];
+        
+        NSLog(@"intBasic=%d--floatBasic=%f--doubleBasic=%f--integerBasic=%ld",
+                     intBasic,floatBasic,doubleBasic,integerBasic);
+        
+        
+        /**
+         NSDate类：
+         */
+        NSDate* date = [NSDate date];
+        //打印国际标准时间
+        NSLog(@"国际标准时间：%@",date);
+        
+        //国际标准时间转本地时间
+        NSTimeZone* zone = [NSTimeZone systemTimeZone];
+        //获取当前时区与格林尼治时间的间隔秒数
+        NSInteger interval = [zone secondsFromGMTForDate:date];
+        
+        NSLog(@"时间间隔为%ld",interval);
+        //获取本地时间
+        NSDate* localDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+        
+        NSLog(@"当前时区时间：%@",localDate);
+        
+        /**
+         格式化格式为：
+         y
+         M
+         d
+         H/h
+         m
+         s
+         */
+        //日期格式转换
+        NSDateFormatter* df = [[NSDateFormatter alloc] init];
+        df.dateFormat = @"yyyy年MM月dd日 HH:mm:ss";
+        NSString* date2String = [df stringFromDate:date];
+        NSLog(@"日期转字符串:%@",date2String);
+        
+        NSDate* string2Date = [df dateFromString:date2String];
+        
+        NSLog(@"字符串转日期:%@",string2Date);
+        
+        NSDate* date1 = [NSDate date];
+        
+        NSLog(@"date1==%@",date1);
+        NSDate* date2 = [NSDate dateWithTimeIntervalSinceNow:10];
+        NSLog(@"date2==%@",date2);
+        
+        NSDate* tempDate = [[NSDate alloc] init];
+        
+        //时间比较返回较早的时间
+        tempDate = [date1 earlierDate:date2];
+        NSLog(@"earlierDate:%@",tempDate);
+        
+        //比较两个时间间隔
+        NSTimeInterval timeInterval = [date2 timeIntervalSinceDate:date1];
+        NSLog(@"interval=%f",timeInterval);
+        
+        //比较两个日期是否相等
+        if ([date1 isEqualToDate:date2]) {
+            NSLog(@"date1和date2相等");
+        }else{
+            NSLog(@"date1和date2不相等");
+        }
+        
+        
     }
     return 0;
 }
