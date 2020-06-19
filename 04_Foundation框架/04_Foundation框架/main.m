@@ -113,6 +113,88 @@ int main(int argc, const char * argv[]) {
         //连接两个字符串
         NSString* newString = [mString1 stringByAppendingString:mString2];
         NSLog(@"合并后的字符串：%@",newString);
+        
+        NSLog(@"=================End 字符串===============================");
+        /**
+         数组类：朱能保存对象类型，元素类型可以不同，不能直接保存基本数据类型
+         1、NSArray：不可变数组（不可新增、不可修改）
+         2、NSMutableArray：可变数组
+         */
+        
+        //1、@[]方式创建数组
+        NSArray* array1 = @[@123,@456,@789];
+        //NSArray存储不同类型数据
+        NSArray* array2 = @[@123,@456,@"789"];
+        NSLog(@"array1==%@",array1);
+        if ([array1[0] isKindOfClass:[NSNumber class]]) {
+            NSLog(@"123是数字");
+        }
+        NSLog(@"array2==%@",array2);
+        if ([array2[2] isKindOfClass:[NSString class]]) {
+            NSLog(@"@789是字符串");
+        }
+        
+        NSArray* array3 =@[@"tom",@"jerry",@"jobs"];
+        NSLog(@"array3===%@",array3);
+        
+        //类方法
+        NSArray* array4 = [NSArray arrayWithObjects:@"123",@456,@"789",nil];
+        
+        NSLog(@"array4===%@",array4);
+        
+        //实例方法 initWithObjects
+        NSArray* array5 = [[NSArray alloc] initWithObjects:@"tom",@"jerry",@"jobs", nil];
+        
+        NSLog(@"array5==%@",array5);
+        
+        //数组的复制
+        NSArray* copyArray = @[@123,@456,@789];
+        
+        //数组的复制将数组的地址赋值给新指针
+        NSArray* copyArray1 = copyArray;
+        
+        //调用arrayWithArray方法属于深复制
+        NSArray* copyArray2 = [NSArray arrayWithArray:copyArray];
+        
+        NSLog(@"原始数组地址：%p，指针复制数组地址：%p，深复制数组地址：%p",copyArray,copyArray1,copyArray2);
+        
+        //数组元素操作
+        NSArray* array = @[@123,@456,@789];
+        //根据下标访问数组中的元组
+        
+        NSNumber *num = array[0];
+        NSLog(@"num:%@",num);
+        
+        id object = [array objectAtIndex:0];
+        NSLog(@"object:%@",object);
+        
+        //获取某个对象的下标
+        NSUInteger index = [array indexOfObject:@456];
+        
+        NSLog(@"对象456的下标为%lu",index);
+        
+        //判断某个对象是否在数组中
+        if ([array containsObject:@123]) {
+            NSLog(@"数组中包含123这个对象");
+        }
+        
+        /**
+         可变数组
+         */
+        //类方法array 初始化可变数组
+        NSMutableArray* mArray1 = [NSMutableArray array];
+        //类方法 arrayWithCapacity初始化数组
+        NSMutableArray* mArray2 = [NSMutableArray arrayWithCapacity:100];
+        
+        //实例方法initWithCapacity
+        NSMutableArray* mArray3 = [[NSMutableArray alloc] initWithCapacity:100];
+        
+        NSMutableArray* mArray = [NSMutableArray arrayWithObjects:@"九九学院",@"99ios", nil];
+        NSLog(@"初始状态下，数组中第一个对象的值:%@",mArray[0]);
+        
+        mArray[0] = @"www.99ios.com";
+        
+        NSLog(@"更新后，数组中第一个对象的值：%@",mArray[0]);
     }
     return 0;
 }
