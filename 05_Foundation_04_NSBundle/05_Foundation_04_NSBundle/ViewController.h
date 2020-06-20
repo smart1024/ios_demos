@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+//定义一个Block属性，无参数、不返回值
+@property(copy) void (^blockProperty)(void);
 
-
+@property(copy,nonatomic) void (^blockPropertyWithInput)(int);//Block有参数，无返回值
 @end
 

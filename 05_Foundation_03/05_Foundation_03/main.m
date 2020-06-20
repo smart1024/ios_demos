@@ -22,6 +22,35 @@ int main(int argc, const char * argv[]) {
         
         //返回的内容是以编码形式显示
         NSLog(@"the data content of 99ios.com %@",dataContent);
+        
+        /**
+         1、Block就是封装了一组代码语句的对象，可任意时间执行
+         2、本质上是可移植的匿名函数，可作为入参，可作为返回值
+         3、Block可接受参数，也可有返回值
+         */
+        
+        //定义一个可接受参数并具有返回值的Block
+        ^(int inputNum){
+            NSLog(@"printBlock Called!");
+            return inputNum;
+        };
+        
+        /**
+         定义变量printBlock指向Block格式如下：
+         返回值类型 (^block名)(参数类型,参数类型...) = ^(参数类型 参数名,参数类型 参数名...){
+            //block体(封装的代码)
+         };
+         */
+        int (^printBlock)(int) = ^(int inputNum){
+            NSLog(@"print Block called!");
+            return inputNum;
+        };
+        
+        //Block调用和函数类似
+        NSLog(@"printBlock 返回值为%d",printBlock(100));
+        
+        //把Block声明为属性
+        
     }
     return 0;
 }

@@ -16,6 +16,7 @@
 		F2C24718249DE8A500B9B798 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24717249DE8A500B9B798 /* main.m */; };
 		F2C24722249DE8A500B9B798 /* _5_Foundation_04_NSBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C24721249DE8A500B9B798 /* _5_Foundation_04_NSBundleTests.m */; };
 		F2C2472D249DE94300B9B798 /* myNewFile.txt in Resources */ = {isa = PBXBuildFile; fileRef = F2C2472C249DE94300B9B798 /* myNewFile.txt */; };
+		F2C24730249E071800B9B798 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C2472F249E071800B9B798 /* Task.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		F2C24721249DE8A500B9B798 /* _5_Foundation_04_NSBundleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _5_Foundation_04_NSBundleTests.m; sourceTree = "<group>"; };
 		F2C24723249DE8A500B9B798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2C2472C249DE94300B9B798 /* myNewFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = myNewFile.txt; sourceTree = "<group>"; };
+		F2C2472E249E071800B9B798 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		F2C2472F249E071800B9B798 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				F2C24716249DE8A500B9B798 /* Info.plist */,
 				F2C2472C249DE94300B9B798 /* myNewFile.txt */,
 				F2C24717249DE8A500B9B798 /* main.m */,
+				F2C2472E249E071800B9B798 /* Task.h */,
+				F2C2472F249E071800B9B798 /* Task.m */,
 			);
 			path = 05_Foundation_04_NSBundle;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C24730249E071800B9B798 /* Task.m in Sources */,
 				F2C2470D249DE8A400B9B798 /* ViewController.m in Sources */,
 				F2C24707249DE8A400B9B798 /* AppDelegate.m in Sources */,
 				F2C24718249DE8A500B9B798 /* main.m in Sources */,
