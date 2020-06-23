@@ -8,6 +8,13 @@
 
 #import "ViewController.h"
 #import "NibView.h"
+
+/**
+ 转换坐标系：
+    由frame 相对父View坐标系转为相对控制器View的坐标系:
+ [self.superView convertRect:self.myView.frame toView:self.view]
+ myView的坐标将转换到相对于控制器view
+ */
 @interface ViewController ()
 
 @end
