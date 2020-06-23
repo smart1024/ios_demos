@@ -17,6 +17,8 @@
 		F29953E824A1918500BBE130 /* _8_XIB____UIView_01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29953E724A1918500BBE130 /* _8_XIB____UIView_01Tests.m */; };
 		F29953F424A191AE00BBE130 /* NibView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29953F324A191AE00BBE130 /* NibView.m */; };
 		F29953F624A1921B00BBE130 /* NibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29953F524A1921B00BBE130 /* NibView.xib */; };
+		F29953FA24A1F2C600BBE130 /* CustomButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29953F924A1F2C600BBE130 /* CustomButton.xib */; };
+		F29953FD24A1F48F00BBE130 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F29953FC24A1F48F00BBE130 /* CustomButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		F29953F224A191AE00BBE130 /* NibView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NibView.h; sourceTree = "<group>"; };
 		F29953F324A191AE00BBE130 /* NibView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NibView.m; sourceTree = "<group>"; };
 		F29953F524A1921B00BBE130 /* NibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibView.xib; sourceTree = "<group>"; };
+		F29953F924A1F2C600BBE130 /* CustomButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButton.xib; sourceTree = "<group>"; };
+		F29953FB24A1F48F00BBE130 /* CustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		F29953FC24A1F48F00BBE130 /* CustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,9 @@
 				F29953D424A1918400BBE130 /* Main.storyboard */,
 				F29953D724A1918400BBE130 /* Assets.xcassets */,
 				F29953D924A1918400BBE130 /* LaunchScreen.storyboard */,
+				F29953F924A1F2C600BBE130 /* CustomButton.xib */,
+				F29953FB24A1F48F00BBE130 /* CustomButton.h */,
+				F29953FC24A1F48F00BBE130 /* CustomButton.m */,
 				F29953DC24A1918400BBE130 /* Info.plist */,
 				F29953DD24A1918400BBE130 /* main.m */,
 				F29953F224A191AE00BBE130 /* NibView.h */,
@@ -199,6 +207,7 @@
 				F29953F624A1921B00BBE130 /* NibView.xib in Resources */,
 				F29953DB24A1918400BBE130 /* LaunchScreen.storyboard in Resources */,
 				F29953D824A1918400BBE130 /* Assets.xcassets in Resources */,
+				F29953FA24A1F2C600BBE130 /* CustomButton.xib in Resources */,
 				F29953D624A1918400BBE130 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29953FD24A1F48F00BBE130 /* CustomButton.m in Sources */,
 				F29953F424A191AE00BBE130 /* NibView.m in Sources */,
 				F29953D324A1918400BBE130 /* ViewController.m in Sources */,
 				F29953CD24A1918400BBE130 /* AppDelegate.m in Sources */,

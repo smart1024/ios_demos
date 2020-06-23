@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CustomButton.h
 //  08_XIB_自定义UIView_01
 //
 //  Created by lilin on 2020/6/23.
@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CustomButton : UIButton
 
 @end
 
+NS_ASSUME_NONNULL_END
