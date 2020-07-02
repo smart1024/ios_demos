@@ -15,6 +15,12 @@
     cellModel.iconName = @"99logo";
     cellModel.source = @"来自99的iPhone 7 Plus";
     cellModel.content = @"苹果iOS开发进阶之路";
+    int arcNum = arc4random_uniform(2);
+    if (arcNum == 1) {
+        cellModel.content = @"对于需要动态调整高度的空间，适用自动布局约束时。一定不要设置其绝对高度，其高度根据空间与其周边其他空控件的位置约束来决定，如下图所示";
+    }else{
+        cellModel.content = @"苹果iOS开发进阶之路";
+    }
     return cellModel;
 }
 
