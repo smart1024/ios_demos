@@ -23,7 +23,7 @@
         //设置代理和数据源
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
+        _tableView.editing = YES;
         //UITableView的顶部视图
         UIView *tableViewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100)];
         tableViewHeader.backgroundColor = [UIColor greenColor];
@@ -73,6 +73,12 @@
     return [tableView fd_heightForCellWithIdentifier:@"cellId" configuration:^(MyTableViewCell* cell) {
         cell.cellData = self.array[indexPath.row];
     }];
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    MyModel* model = self.array[sourceIndexPath.row];
+    [self.array removeObjectAtIndex:sourceIndexPath.row];
+    [self.array insertObject:model atIndex:destinationIndexPath.row];
 }
 
 @end
