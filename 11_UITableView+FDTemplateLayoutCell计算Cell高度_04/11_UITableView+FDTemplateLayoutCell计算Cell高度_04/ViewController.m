@@ -19,10 +19,20 @@
 
 - (UITableView *)tableView{
     if (_tableView == nil) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStyleGrouped];
         //设置代理和数据源
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        
+        //UITableView的顶部视图
+        UIView *tableViewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 100)];
+        tableViewHeader.backgroundColor = [UIColor greenColor];
+        _tableView.tableHeaderView = tableViewHeader;
+        //UITableView的底部视图
+        UIView *tableViewFooter = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 50)];
+        tableViewFooter.backgroundColor = [UIColor yellowColor];
+        _tableView.tableFooterView = tableViewFooter;
+        
         //注册单元格
         
         NSString* cellName = NSStringFromClass(MyTableViewCell.class);
