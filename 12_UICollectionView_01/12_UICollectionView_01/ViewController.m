@@ -18,6 +18,18 @@
     if (_collectionView == nil) {
         //必须传布局类型
         UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        //最小行间距
+        flowLayout.minimumLineSpacing = 10;
+        //最小列间距
+        flowLayout.minimumInteritemSpacing = 10;
+        
+        //header大小
+        flowLayout.headerReferenceSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 50);
+        //footer大小
+        flowLayout.footerReferenceSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 50);
+        
+        flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
@@ -29,13 +41,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.collectionView];
+    //UICollectionView 需要reuse的View都需要注册
     //注册单元格，在懒加载方法中也可以
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    //注册headerView以复用
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footerView"];
 }
 
-
+//每个分段中item数量
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 100;
+    return 10;
+}
+
+//分段数量
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 10;
 }
 
 //返回单元格
@@ -43,6 +64,23 @@
     UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor greenColor];
     return cell;
+}
+
+/**
+ 补充视图,
+ */
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    UICollectionReusableView* reusableView = nil;
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+       UICollectionReusableView* header =  [self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerView" forIndexPath:indexPath];
+        header.backgroundColor = [UIColor greenColor];
+        reusableView = header;
+    }else{
+        UICollectionReusableView* footer = [self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"footerView" forIndexPath:indexPath];
+        footer.backgroundColor = [UIColor redColor];
+        reusableView = footer;
+    }
+    return reusableView;
 }
 
 //设置单元格能否被选中
