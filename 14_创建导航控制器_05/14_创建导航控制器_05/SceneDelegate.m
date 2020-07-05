@@ -11,11 +11,25 @@
     if (@available(iOS 13,*)) { //ios13以上才会走下面代码
         self.window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene*)scene];
         UIViewController* vc = [[UIViewController alloc] init];
-        vc.view.backgroundColor = [UIColor redColor];
+//        vc.view.backgroundColor = [UIColor redColor];
+        vc.view.backgroundColor = [UIColor whiteColor];
         vc.title = @"99IOS";
         UINavigationController* nv = [[UINavigationController alloc] initWithRootViewController:vc];
         //默认UIBarStyleDefault
-        nv.navigationBar.barStyle = UIBarStyleBlack;
+//        nv.navigationBar.barStyle = UIBarStyleBlack;
+        nv.navigationBar.barStyle = UIBarStyleDefault;
+        //修改导航栏背景颜色
+//        nv.navigationBar.barTintColor = [UIColor greenColor];
+        
+        //设置导航栏图标的颜色
+       // nv.navigationBar.tintColor
+        
+        UIImage* backGroundImage =[UIImage imageNamed:@"background_normal"];
+        
+//        backGroundImage = [backGroundImage resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
+        //
+        [nv.navigationBar setBackgroundImage:backGroundImage forBarMetrics:UIBarMetricsDefault];
+        
         self.window.rootViewController = nv;
         [self.window makeKeyAndVisible];
     }
