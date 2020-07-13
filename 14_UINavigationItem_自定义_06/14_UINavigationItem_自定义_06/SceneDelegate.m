@@ -19,11 +19,19 @@
         UINavigationController* nv = [[UINavigationController alloc] initWithRootViewController:vc];
         
         UIBarButtonItem* leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:nil ];
-        
-        UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"write_comment"] style:UIBarButtonItemStylePlain target:self action:nil];
-        
+//可通过tintcolor改变图片颜色
+//        UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"write_comment"] style:UIBarButtonItemStylePlain target:self action:nil];
+//
         //注意是ViewController.navigationItem
         vc.navigationItem.leftBarButtonItem = leftBarButtonItem;
+        
+        //展示图片原始样式，而不是tintcolor样式
+        UIButton* rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        rightBtn.frame = CGRectMake(0, 0, 44, 44);
+        [rightBtn setImage:[UIImage imageNamed:@"write_comment"] forState:UIControlStateNormal];
+        
+        UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+        
         vc.navigationItem.rightBarButtonItem = rightBarButtonItem;
         
         //设置navigationItem的颜色
