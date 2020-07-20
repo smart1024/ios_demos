@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Person.h"
+#import "Student.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ArchiveService : NSObject
 
 +(BOOL)writeObjectsToArchive:(NSMutableArray*)persons;
 +(NSMutableArray*)readObjectsFromArchiveFile;
+
++(BOOL)writeSubObjectToArchive:(Student *)student;
++(Student*)readSubObjectFromArchiveFile;
+
 @end
 
 NS_ASSUME_NONNULL_END

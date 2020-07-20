@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F23A000B24C586DB00316851 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = F23A000A24C586DB00316851 /* Person.m */; };
 		F23A000E24C589B200316851 /* ArchiveService.m in Sources */ = {isa = PBXBuildFile; fileRef = F23A000D24C589B200316851 /* ArchiveService.m */; };
+		F23A001124C59F0200316851 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = F23A001024C59F0200316851 /* Student.m */; };
 		F23AFFE424C56E6B00316851 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F23AFFE324C56E6B00316851 /* AppDelegate.m */; };
 		F23AFFE724C56E6B00316851 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F23AFFE624C56E6B00316851 /* SceneDelegate.m */; };
 		F23AFFEA24C56E6B00316851 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23AFFE924C56E6B00316851 /* ViewController.m */; };
@@ -35,6 +36,8 @@
 		F23A000A24C586DB00316851 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		F23A000C24C589B200316851 /* ArchiveService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArchiveService.h; sourceTree = "<group>"; };
 		F23A000D24C589B200316851 /* ArchiveService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArchiveService.m; sourceTree = "<group>"; };
+		F23A000F24C59F0200316851 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		F23A001024C59F0200316851 /* Student.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
 		F23AFFDF24C56E6B00316851 /* 20_归档多个自定义对象_03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "20_归档多个自定义对象_03.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F23AFFE224C56E6B00316851 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F23AFFE324C56E6B00316851 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				F23AFFE624C56E6B00316851 /* SceneDelegate.m */,
 				F23AFFE824C56E6B00316851 /* ViewController.h */,
 				F23A000924C586DB00316851 /* Person.h */,
+				F23A000F24C59F0200316851 /* Student.h */,
+				F23A001024C59F0200316851 /* Student.m */,
 				F23A000A24C586DB00316851 /* Person.m */,
 				F23A000C24C589B200316851 /* ArchiveService.h */,
 				F23A000D24C589B200316851 /* ArchiveService.m */,
@@ -222,6 +227,7 @@
 				F23AFFE424C56E6B00316851 /* AppDelegate.m in Sources */,
 				F23A000E24C589B200316851 /* ArchiveService.m in Sources */,
 				F23A000B24C586DB00316851 /* Person.m in Sources */,
+				F23A001124C59F0200316851 /* Student.m in Sources */,
 				F23AFFF524C56E6B00316851 /* main.m in Sources */,
 				F23AFFE724C56E6B00316851 /* SceneDelegate.m in Sources */,
 			);

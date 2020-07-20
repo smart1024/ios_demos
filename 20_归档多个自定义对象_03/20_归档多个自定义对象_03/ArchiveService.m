@@ -36,4 +36,22 @@
     return [NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithArray:@[NSMutableArray.class,Person.class]] fromData:data error:nil];
 }
 
++ (BOOL)writeSubObjectToArchive:(Student *)student{
+    NSString* docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    
+    NSLog(@"%@",docPath);
+    NSString* filePath = [docPath stringByAppendingPathComponent:@"student.archive"];
+    
+    NSData* data = [NSKeyedArchiver archivedDataWithRootObject:student requiringSecureCoding:YES error:nil];
+    
+    return [data writeToFile:filePath atomically:YES];
+}
+
++ (Student *)readSubObjectFromArchiveFile{
+    NSString* docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString* filePath = [docPath stringByAppendingPathComponent:@"student.archive"];
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    return [NSKeyedUnarchiver unarchivedObjectOfClass:[Student class] fromData:data error:nil];
+}
+
 @end
