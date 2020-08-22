@@ -18,9 +18,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self openDatabaseWithName:@"99ios.sqlite"];
+    
+    [self createTable];
+    
+    [self dropTable];
+    
     [self closeDb];
 }
 
+#pragma 创建数据库
 - (BOOL)openDatabaseWithName:(NSString *)databaseName {
     NSString* docsDir = nil;
     NSArray* dirPath = nil;
@@ -54,6 +60,44 @@
             NSLog( @"数据库 打开失败：%@", dataBasePath);
             return NO;
         }
+    }
+}
+
+//创建数据库表
+-(BOOL)createTable{
+    if(NULL == _db){
+        NSLog(@"创建或打开数据库失败");
+        return NO;
+    }
+    
+    char* errMsg = NULL;
+    
+    //拼接sql语句
+    const char* sql = "create table if not exists contacts (id integer primary key autoincrement,name text,address text,phone text)";
+    if (sqlite3_exec(_db, sql, NULL, NULL, &errMsg) != SQLITE_OK) {
+        NSLog( @"创建'联系人'表失败");
+        return NO;
+    }
+    NSLog( @"创建'联系人'表成功");
+    return YES;
+}
+
+//删除数据库表
+- (BOOL)dropTable {
+    if (NULL == _db) {
+        NSLog(@"数据库不存在或数据库未打开");
+        return NO;
+    }
+    char* errMsg = NULL;
+    
+    const char* sql = "drop table contacts";
+    
+    if (sqlite3_exec(_db, sql, NULL, NULL, &errMsg) == SQLITE_OK) {
+        NSLog( @"删除'联系人'表成功");
+        return YES;
+    }else{
+        NSLog( @"删除'联系人'表失败");
+        return NO;
     }
 }
 
