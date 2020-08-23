@@ -21,6 +21,21 @@
     
     [self createTable];
     
+    //插入一条记录
+    [self insertContact:@"ios" address:@"武汉东新区" phone:@"110"];
+    
+    //查询一次
+    [self printAllContact];
+    
+    //更新记录
+    [self updatePhone:@"119" forContactWithName:@"ios"];
+    
+    //查询记录
+    [self printAllContact];
+    
+    //删除记录name为ios的记录
+    [self deleteAllContactWithName:@"ios"];
+    
     [self dropTable];
     
     [self closeDb];
@@ -81,6 +96,101 @@
     NSLog( @"创建'联系人'表成功");
     return YES;
 }
+
+//插入记录
+- (BOOL)insertContact:(NSString *)name address:(NSString *)address phone:(NSString *)phone {
+    if (NULL == _db) {
+        NSLog(@"数据库没打开或者数据库不存在，添加联系人失败");
+        return NO;
+    }
+    
+    char* errMsg = NULL;
+    
+    //拼接sql语句 values字符串需要单引号
+    NSString* sqlString =[NSString stringWithFormat:@"insert into contacts (name,address,phone) values('%@','%@','%@');",name,address,phone];
+    
+    const char* sql = [sqlString UTF8String];
+    if (sqlite3_exec(_db, sql, NULL, NULL, &errMsg) == SQLITE_OK) {
+        NSLog( @"添加联系人成功");
+        return YES;
+    } else {
+        NSLog( @"添加联系人失败");
+        return YES;
+    }
+}
+
+//查询记录
+- (void)printAllContact {
+    if (NULL == _db) {
+        NSLog(@"数据库不存在或未打开");
+        return;
+    }
+    //拼接sql
+     const char* sql = "select * from contacts";
+    
+    sqlite3_stmt* stmt = NULL;
+    
+    //sqlite3_prepare_v2 执行语句前编译sql
+    if (sqlite3_prepare_v2(_db, sql, -1, &stmt, nil) == SQLITE_OK) { //表示查询成功
+        //sqlite3_step查询一条记录
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            char* name = (char*)sqlite3_column_text(stmt, 1);
+            NSString* nameString = [[NSString alloc] initWithUTF8String:name];
+            
+            char* address = (char*)sqlite3_column_text(stmt, 2);
+            NSString* addressString = [[NSString alloc] initWithUTF8String:address];
+            
+            char* phone = (char*)sqlite3_column_text(stmt, 3);
+            NSString* phoneString = [[NSString alloc] initWithUTF8String:phone];
+            
+            NSLog(@"name: %@, address: %@, phone: %@", nameString, addressString, phoneString);
+        }
+    }
+    
+    //sqlites_prepare_v2需要成对出现，否则会内存泄漏
+    sqlite3_finalize(stmt);
+}
+
+//更新表中记录
+- (BOOL)updatePhone:(NSString *)phone forContactWithName:(NSString *)name {
+    if (NULL == _db) {
+        NSLog(@"数据库不存在，更新联系人失败");
+        return NO;
+    }
+    char *errMsg = NULL;
+    NSString* sqlString = [NSString stringWithFormat:@"update contacts set phone = '%@' where name = '%@'",phone,name];
+    
+    const char* sql = [sqlString UTF8String];
+    if (sqlite3_exec(_db, sql, NULL, NULL, &errMsg) ==SQLITE_OK) {
+        NSLog( @"更新联系人成功");
+        return YES;
+    } else {
+        NSLog( @"更新联系人失败");
+        return YES;
+    }
+    
+}
+
+
+//删除表中一条记录
+- (BOOL)deleteAllContactWithName:(NSString *)name {
+    if (NULL == _db) {
+        NSLog(@"数据库不存在，删除联系人失败");
+        return NO;
+    }
+    char *errMsg = NULL;
+    
+    NSString* sqlString = [NSString stringWithFormat:@"delete from contacts where name = '%@'",name];
+    const char* sql = [sqlString UTF8String];
+    if (sqlite3_exec(_db, sql, NULL, NULL, &errMsg) == SQLITE_OK) { //sql执行成功
+        NSLog( @"删除联系人成功");
+        return YES;
+    } else {
+        NSLog( @"删除联系人失败");
+        return NO;
+    }
+}
+
 
 //删除数据库表
 - (BOOL)dropTable {
