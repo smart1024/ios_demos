@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MYView.h"
+#import "objc/runtime.h"
 /**
  1、视图UIView外观
  Frame:UIView在父视图坐标系中位置和大小
@@ -51,8 +52,42 @@
     return _myView;
 }
 
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+        SEL originalSelector = @selector(viewDidLoad);
+        SEL swizzledSelector = @selector(jkviewDidLoad);
+        
+        Method originalMethod = class_getInstanceMethod(class,originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class,swizzledSelector);
+        
+        //judge the method named  swizzledMethod is already existed.
+        BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+        // if swizzledMethod is already existed.
+        if (didAddMethod) {
+            class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        }
+        else {
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
+    });
+}
+
+- (void)jkviewDidLoad {
+    NSLog(@"替换的方法");
+//    [self jkviewDidLoad];
+}
+
+- (void)viewDidLoad11{
+    NSLog(@"viewDidLoad11替换的方法");
+//    [self viewDidLoad11];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self viewDidLoad11];
    //添加yellowView到控制器视图self.view
     UIView* yellowView = [[UIView alloc] init];
     yellowView.frame = CGRectMake(100, 100, 200, 200);
